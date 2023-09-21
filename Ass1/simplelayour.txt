@@ -1,6 +1,6 @@
 networks assignment 1 simple layout:
 
-producer header: id: 3 bytes,
+producer header: id: 3 bytes, first byte must be 0xAA
                  stream_no: 1 byte, 00 if N/A
                  frame_no: 1 byte.  00 if N/A
                  type: 1 byte. 0x00 for announcement, 0x01 if the payload is a frame
@@ -9,4 +9,8 @@ producer header: id: 3 bytes,
 Broker header when announcing: same header as producer
 
 broker header when forwarding:
+
+consumer header: id: 3 bytes, first byte must be 0xCC
+                 number: 1 byte
+
                              
