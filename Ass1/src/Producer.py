@@ -7,15 +7,17 @@ bufferSize = 1024
 video_path = '\..\First20Frames'
 
 
-# TODO allow for 1 producer to have multiple streams
 class Producer:
     def __init__(self, producer_id: bytes):
+        #if len(producer_id) != 3:
+        #   raise Exception(f"producer_id must be bytes of length 3, id is {len(producer_id)}")
         self.id = producer_id
+        self.name = 'Producer'
         self.no_streams = 0
         self.UDPsocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-        self.UDPsocket.bind((localIP, localPort))
+        print(self.name)
+        self.UDPsocket.bind(("Producer", localPort))
 
-    # TODO Include functionality for the producer to wait for subscriptions before continuing
     def notify_broker(self, stream_no):
         msg = str.encode(f"Announcing the topic contained in this header!")
         header = self.id + stream_no.to_bytes(1, 'big') + 0x0000.to_bytes(2, 'big')
@@ -43,3 +45,12 @@ class Producer:
 def png_to_bytearray(filepath: str):
     with open(filepath, "rb") as img:
         return bytearray(img.read())
+
+
+def main():
+    producer1 = Producer(b'\xAA\xBB\xCC')
+    producer1.new_stream()
+
+
+if __name__ == '__main__':
+    main()

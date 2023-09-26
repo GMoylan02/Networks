@@ -8,9 +8,10 @@ producer header: id: 3 bytes, first byte must be 0xAA
 
 Broker header when announcing: same header as producer
 
-broker header when forwarding:
+broker header when forwarding: same header as producer
 
 consumer header: id: 3 bytes, first byte must be 0xCC
                  number: 1 byte
+                 id of producer it is subscribing to, 3 bytes
 
                              
