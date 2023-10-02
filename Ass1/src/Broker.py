@@ -14,11 +14,14 @@ while True:
     isAnnouncement = incoming_msg[5:5] == 0x00  # this should get the 5th byte??
     if isAnnouncement:
         # Reply to producer for demonstration purposes
+        # TODO fix it never gets here
         UDPBrokerSocket.sendto(str.encode("Announcement received!"), (f'Producer', 50000))
+        print("Announcement received!")
         #for i in range(len(consumer_list)):
             # Forwards announcement to all consumers
             #UDPBrokerSocket.sendto(incoming_msg, (consumer_list[i].name, 50000))
     else:
         UDPBrokerSocket.sendto(str.encode(f"Frame{incoming_msg[4:4]} received!"), (f'Producer', 50000))
+        print("Frame received!")
 
 

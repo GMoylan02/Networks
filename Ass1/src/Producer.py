@@ -4,7 +4,7 @@ localIP = "Producer"
 
 localPort = 50000
 bufferSize = 1024
-video_path = '\..\First20Frames'
+video_path = '/First20Frames'
 
 
 class Producer:
@@ -27,11 +27,13 @@ class Producer:
     # Assumes the frames follow the file naming convention of "frame001.png" and so on
     # TODO implement functionality to send audio as well
     def publish(self, stream_no):
-        bytes_to_send = bytearray()
+        bytes_to_send = []
         for i in range(1, 21):
-            bytes_to_send.extend(png_to_bytearray(f"{video_path}\frame{i:03d}.png"))
-            header = self.id + stream_no + i.to_bytes(1, 'big') + 0x01  # See txt file for byte break down
-            self.UDPsocket.sendto(header + bytes_to_send[i-1], ("Broker", 50000))
+            #bytes_to_send.append
+            #bytes_to_send.extend(png_to_bytearray(f"{video_path}/frame{i:03d}.png"))
+            #print(bytes_to_send[i])
+            header = self.id + stream_no.to_bytes(1, 'big') + i.to_bytes(1, 'big') + b'\x01'  # See txt file for byte break down
+            self.UDPsocket.sendto(header + bytes(png_to_bytearray(f"{video_path}/frame{i:03d}.png")), ("Broker", 50000))
 
 # Increment the number of streams, notify the broker, give ample time for consumers to sub, and then publish frames
     def new_stream(self):
@@ -44,7 +46,8 @@ class Producer:
 # Given the filepath, converts a png file to a bytearray
 def png_to_bytearray(filepath: str):
     with open(filepath, "rb") as img:
-        return bytearray(img.read())
+        t = bytearray(img.read())
+        return t
 
 
 def main():
