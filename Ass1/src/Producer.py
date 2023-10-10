@@ -1,5 +1,6 @@
 import socket
 import time
+
 localIP = "Producer"
 
 localPort = 50000
@@ -20,7 +21,8 @@ class Producer:
 
     def notify_broker(self, stream_no):
         msg = str.encode(f"Announcing the topic contained in this header!")
-        header = self.id + stream_no.to_bytes(1, 'big') + 0x0000.to_bytes(2, 'big')
+        header = self.id + stream_no.to_bytes(1, 'big') + b'\x00\x00'
+        print(header)
         self.UDPsocket.sendto(header + msg, ("Broker", 50000))
 
     # Publishes the videos as packets to the broker
