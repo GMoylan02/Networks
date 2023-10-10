@@ -15,7 +15,7 @@ subscribed = dict()
 def from_producer(incoming_msg):
     return incoming_msg[0:1] == b'\xAA'
 
-
+# TODO check if a packet is a ping from a consumer or not
 while True:
     incoming_msg = UDPBrokerSocket.recvfrom(bufferSize)[0]
     address = UDPBrokerSocket.recvfrom(bufferSize)[1]
