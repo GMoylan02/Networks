@@ -20,6 +20,7 @@ class Producer:
         self.UDPsocket.bind(("Producer", localPort))
 
     def notify_broker(self, stream_no):
+        print(f'Producer {self.id} is announcing stream no {stream_no}!')
         msg = str.encode(f"Announcing the topic contained in this header!")
         header = self.id + stream_no.to_bytes(1, 'big') + b'\x00\x00'
         print(header)
@@ -29,6 +30,7 @@ class Producer:
     # Assumes the frames follow the file naming convention of "frame001.png" and so on
     # TODO implement functionality to send audio as well
     def publish(self, stream_no):
+        print(f'Producer {self.id} started publishing stream no {stream_no}!')
         bytes_to_send = []
         for i in range(1, 21):
             #bytes_to_send.append
@@ -39,6 +41,7 @@ class Producer:
 
 # Increment the number of streams, notify the broker, give ample time for consumers to sub, and then publish frames
     def new_stream(self):
+        print(f"Producer id {self.id} started a stream!")
         self.no_streams += 1
         self.notify_broker(self.no_streams)
         time.sleep(1)
@@ -50,12 +53,3 @@ def png_to_bytearray(filepath: str):
     with open(filepath, "rb") as img:
         t = bytearray(img.read())
         return t
-
-
-def main():
-    producer1 = Producer(b'\xAA\xBB\xCC')
-    producer1.new_stream()
-
-
-if __name__ == '__main__':
-    main()
