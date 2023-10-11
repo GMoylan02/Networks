@@ -20,7 +20,7 @@ class Producer:
     def notify_broker(self, stream_no):
         print(f'Producer {self.id} is announcing stream no {stream_no}!')
         msg = str.encode(f"Announcing the topic contained in this header!")
-        header = self.id + stream_no.to_bytes(1, 'big') + b'\x00\x00'
+        header = self.id + stream_no.to_bytes(1, 'big') + b'\x00\x01'
         print(header)
         self.UDPsocket.sendto(header + msg, ("Broker", 50000))
 
@@ -30,7 +30,7 @@ class Producer:
     def publish(self, stream_no):
         print(f'Producer {self.id} started publishing stream no {stream_no}!')
         for i in range(1, 21):
-            header = self.id + stream_no.to_bytes(1, 'big') + i.to_bytes(1, 'big') + b'\x01'
+            header = self.id + stream_no.to_bytes(1, 'big') + i.to_bytes(1, 'big') + b'\x00'
             self.UDPsocket.sendto(header + bytes(png_to_bytearray(f"{video_path}/frame{i:03d}.png")), ("Broker", 50000))
 
 # Increment the number of streams, notify the broker, give ample time for consumers to sub, and then publish frames

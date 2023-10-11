@@ -3,7 +3,7 @@ networks assignment 1 simple layout:
 producer header: id: 3 bytes, first byte must be 0xAA
                  stream_no: 1 byte, 00 if N/A
                  frame_no: 1 byte.  00 if N/A
-                 type: 1 byte. 0x00 for announcement, 0x01 if the payload is a frame
+                 type: 1 byte. 0x01 for announcement, 0x00 if the payload is a frame
                  total 6 bytes for producer header
 
 Broker header when announcing: same header as producer
@@ -12,6 +12,7 @@ broker header when forwarding: same header as producer
 
 consumer header: id: 3 bytes, first byte must be 0xCC
                  stream number: 1 byte
+                 is ping: 1 byte. 0x01 if true, 0x00 if false
                  id of producer it is subscribing to, 3 bytes
 
                              
