@@ -10,8 +10,6 @@ video_path = '/First20Frames'
 
 class Producer:
     def __init__(self, producer_id: bytes):
-        #if len(producer_id) != 3:
-        #   raise Exception(f"producer_id must be bytes of length 3, id is {len(producer_id)}")
         self.id = producer_id
         self.name = 'Producer'
         self.no_streams = 0
@@ -31,17 +29,14 @@ class Producer:
     # TODO implement functionality to send audio as well
     def publish(self, stream_no):
         print(f'Producer {self.id} started publishing stream no {stream_no}!')
-        bytes_to_send = []
         for i in range(1, 21):
-            #bytes_to_send.append
-            #bytes_to_send.extend(png_to_bytearray(f"{video_path}/frame{i:03d}.png"))
-            #print(bytes_to_send[i])
-            header = self.id + stream_no.to_bytes(1, 'big') + i.to_bytes(1, 'big') + b'\x01'  # See txt file for byte break down
+            header = self.id + stream_no.to_bytes(1, 'big') + i.to_bytes(1, 'big') + b'\x01'
             self.UDPsocket.sendto(header + bytes(png_to_bytearray(f"{video_path}/frame{i:03d}.png")), ("Broker", 50000))
 
 # Increment the number of streams, notify the broker, give ample time for consumers to sub, and then publish frames
     def new_stream(self):
         print(f"Producer id {self.id} started a stream!")
+        # TODO figure out a mechanism where stream numbers dont overlap
         self.no_streams += 1
         self.notify_broker(self.no_streams)
         time.sleep(1)

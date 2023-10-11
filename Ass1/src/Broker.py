@@ -41,4 +41,3 @@ while True:
     else:
         print(f"{address} just subscribed to stream number {stream_no}!")
         subscribed[address] = stream_no
-

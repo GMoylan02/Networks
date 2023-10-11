@@ -5,15 +5,6 @@ import time
 bufferSize = 1024
 
 
-def main():
-    consumer1 = Consumer(b'\xCC\xBB\xAA')
-    consumer1.listen()
-
-
-if __name__ == '__main__':
-    main()
-
-
 class Consumer:
     def __init__(self, consumer_id):
         self.consumer_id = consumer_id
@@ -31,10 +22,10 @@ class Consumer:
         t1.join()
         t2.join()
 
-
-    def __subscribe(self, stream_no, producer_id):
+    def __subscribe(self, stream_no, producer_id, address):
+        print(f'Consumer {self.consumer_id} subscribed to stream no {stream_no}!')
         header = self.consumer_id + stream_no + producer_id
-        self.UDPsocket.sendto(header, ("Broker", 50000))
+        self.UDPsocket.sendto(header, address)
 
     # Periodically pings the broker
     def __ping(self, interval):
@@ -43,17 +34,21 @@ class Consumer:
             header = self.consumer_id + b'\x00' + b'\x00\x00\x00'
             self.UDPsocket.sendto(header, ("Broker", 50000))
 
-
     def __listen(self):
+        print(f'Consumer {self.consumer_id} started listening!')
         while True:
-            incoming_msg = self.UDPsocket.recvfrom(bufferSize)
+            incoming_msg = self.UDPsocket.recvfrom(bufferSize)[0]
+            address = self.UDPsocket.recvfrom(bufferSize)[1]
             producer_id = incoming_msg[0:3]
-            stream_no = incoming_msg[4:4]
-            is_announcement = incoming_msg[5:5] == 0x00
-            if is_announcement and stream_no % self.consumer_id == 0: # Just arbritrary, consumer m subs to producer n if m is a multiple of n
-                self.__subscribe(stream_no, producer_id)
+            stream_no = incoming_msg[3:4]
+            frame_no = incoming_msg[4:5]
+            is_announcement = incoming_msg[5:6] == 0x00
+
+            if (is_announcement and input(f"Do you want to subscribe to stream {stream_no}?(Yes/No)").lower() == 'yes'
+                    or 'y'):
+                self.__subscribe(stream_no, producer_id, address)
             else:
-                print("Received a frame!")
+                print(f'Consumer {self.consumer_id} received frame no {frame_no} from producer {producer_id}!')
 
 
 
