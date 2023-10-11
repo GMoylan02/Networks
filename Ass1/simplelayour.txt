@@ -1,5 +1,18 @@
 networks assignment 1 simple layout:
 
+sender_id:3 - stream no:1 - frame_no:1 - is_announce:1 - ping_recd:1 - is_ping:1 - is_subscription:1
+total header 9 bytes
+
+sender_id: id of the producer/consumer sending a message, all zeroes if from broker
+stream_no: number of the stream, 0 if n/a
+frame_no: number of the frame, 0 if n/a
+is_announce: 1 if the packet is announcing a stream, 0 otherwise
+ping_recd: 1 if broker is telling someone a ping is received, 0 otherwise
+is_ping: 1 if the packet is a ping, 0 otherwise
+
+
+
+
 producer header: id: 3 bytes, first byte must be 0xAA
                  stream_no: 1 byte, 00 if N/A
                  frame_no: 1 byte.  00 if N/A
@@ -10,9 +23,13 @@ Broker header when announcing: same header as producer
 
 broker header when forwarding: same header as producer
 
+broker header when responding to ping:
+                consumer id, 3 bytes
+                1 signalling the ping has been received
+
+
 consumer header: id: 3 bytes, first byte must be 0xCC
                  stream number: 1 byte
                  is ping: 1 byte. 0x01 if true, 0x00 if false
-                 id of producer it is subscribing to, 3 bytes
 
                              
