@@ -2,11 +2,15 @@
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+
 [project]
 name = "Ass1-gmoylan"
-version = "0.0.29"
+version = "0.0.67"
 authors = [
   { name="Gerard Moylan", email="gerardmoylan02@gmail.com" },
+]
+dependencies = [ # Optional
+  "netifaces"
 ]
 description = "networking assignment 1"
 readme = "README.md"
