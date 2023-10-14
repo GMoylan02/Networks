@@ -34,7 +34,7 @@ class Consumer:
     # Periodically pings the broker
     def __ping(self, interval):
         while not self.ping_received:
-            # sender_id:3 - stream no:2 - frame_no:1 - is_announce:1 - ping_recd:1 - is_ping:1 - is_subscription:1 -audio_no:2
+            # sender_id:3 - stream no:1 - frame_no:2 - is_announce:1 - ping_recd:1 - is_ping:1 - is_subscription:1 -audio_no:2
             header = self.consumer_id + b'\x00\x00\x00\x00\x00\x01\x00\x00\x00'
             print("Pinged Broker!")
             self.UDPsocket.sendto(header, ("Broker", 50000))

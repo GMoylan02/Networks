@@ -69,7 +69,7 @@ class Producer:
             stream_no = incoming_msg[3:4]
             ping_recd = incoming_msg[7:8] == b'\x01'
 
-            if stream_no != b'\x00':
+            if stream_no != b'\x00' and not int.from_bytes(stream_no, signed=False, byteorder='little') in self.stream_ids:
                 # Must be stream id update
                 self.stream_ids.append(int.from_bytes(stream_no, signed=False, byteorder='little'))
             elif ping_recd:
@@ -103,6 +103,7 @@ class Producer:
         if len(self.stream_ids) == 0:
             return 1
         else:
+            self.stream_ids.sort()
             return self.stream_ids[-1]+1
 
 
@@ -119,7 +120,7 @@ def m4v_to_bytes(filepath: str, n):
         t = audio.read()
     bytes_length = len(t)
     ret = []
-
+    diff = 0
     if bytes_length % n != 0:
         segment_length = 1 + int((bytes_length / n))
         diff = (n * segment_length) - bytes_length
@@ -132,7 +133,3 @@ def m4v_to_bytes(filepath: str, n):
 
     return ret
 
-
-def split(a, n):
-    k, m = divmod(len(a), n)
-    return (a[i*k+min(i, m):(i+1)*k+min(i+1, m)] for i in range(n))
