@@ -13,6 +13,15 @@ audio_path = 'AudioSample.m4v'
 
 
 class Producer:
+    """
+    How to use the Producer:
+
+    Simply instantiate a producer and call the produce method
+    producer1 = Producer(YOUR_ID)
+    producer1.produce()
+
+    Don't call any of the private methods as those are meant to be used internally
+    """
     def __init__(self, producer_id: bytes):
         self.producer_id = producer_id
         self.name = 'Producer'

@@ -6,6 +6,15 @@ bufferSize = 1024
 
 
 class Consumer:
+    """
+    How to use the Consumer:
+
+    Simply instantiate a consumer and call the consume method
+    consumer1 = Consumer(YOUR_ID)
+    consumer1.consume()
+
+    Don't call any of the private methods as those are meant to be used internally
+    """
     def __init__(self, consumer_id):
         self.consumer_id = consumer_id
         self.name = f'Consumer{consumer_id}'
