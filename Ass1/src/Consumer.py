@@ -2,6 +2,12 @@ import socket
 import threading
 import time
 import netifaces as ni
+
+"""
+ Name: Gerard Moylan
+ Student ID: 21364007
+"""
+
 bufferSize = 1024
 
 

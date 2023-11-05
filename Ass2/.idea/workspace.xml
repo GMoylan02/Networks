@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="68b88382-26fb-4d95-a659-c1ff85733cf8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Header layout" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame020.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/outline.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/simplelayour.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/src/Broker.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ass1/src/Broker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/src/Consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ass1/src/Consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/src/Producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ass1/src/Producer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/src/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Ass1/src/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ass1/src/insideBroker.sh" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2Xin3b3fgd4VOHUm1k4T8RbNTSo" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\Networks\Ass2\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Docker.src/compose.yaml.router1: Compose Deployment">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Ass2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="src/compose.yaml.client1: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="client1" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="src/compose.yaml.client2: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="client2" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="src/compose.yaml.router1: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="router1" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="src/compose.yaml.router2: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="router2" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.src/compose.yaml.router1: Compose Deployment" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Docker.src/compose.yaml.client2: Compose Deployment" />
+        <item itemvalue="Docker.src/compose.yaml.client1: Compose Deployment" />
+        <item itemvalue="Docker.src/compose.yaml.router2: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="68b88382-26fb-4d95-a659-c1ff85733cf8" name="Changes" comment="" />
+      <created>1699120569972</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699120569972</updated>
+      <workItem from="1699120572214" duration="7353000" />
+      <workItem from="1699148902655" duration="2642000" />
+      <workItem from="1699151644016" duration="9000" />
+      <workItem from="1699203512952" duration="1418000" />
+      <workItem from="1699207859486" duration="17000" />
+      <workItem from="1699208196816" duration="2547000" />
+      <workItem from="1699211012186" duration="769000" />
+      <workItem from="1699211818776" duration="1202000" />
+      <workItem from="1699220434901" duration="58000" />
+      <workItem from="1699220509539" duration="575000" />
+      <workItem from="1699221107778" duration="3906000" />
+      <workItem from="1699225429120" duration="2663000" />
+      <workItem from="1699228268894" duration="26000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Ass2$main.coverage" NAME="main Coverage Results" MODIFIED="1699226953968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+  </component>
+</project>

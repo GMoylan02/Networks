@@ -1,0 +1,18 @@
+Routing: Routers all communicate to get an idea of where all other routers are and how to get to them efficiently
+can occur across multiple networks
+
+Forwarding: Using the knowledge gained from routing, and given a packet with a destination, know who to forward
+the packet to
+
+Each router has a forwarding table where
+key = destination node
+value = next node to go to in order to reach destination node
+so for each possible destination, the router has stored what it believes to be the best possible next step
+
+header: (subject to change)
+1 byte: booleans
+4 bytes: src address
+4 bytes: destination address
+total: 9 bytes
+
+currently working with a topology of

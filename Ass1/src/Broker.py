@@ -1,6 +1,11 @@
 import socket
 import threading
 
+"""
+ Name: Gerard Moylan
+ Student ID: 21364007
+"""
+
 localIP = "Broker"
 
 localPort = 50000
