@@ -11,8 +11,12 @@ so for each possible destination, the router has stored what it believes to be t
 
 header: (subject to change)
 1 byte: booleans
+2 bytes: packet id (random)
 4 bytes: src address
 4 bytes: destination address
-total: 9 bytes
+total: 11 bytes
 
-currently working with a topology of
+bools:
+1 bit: ack
+
+when a router receives a packet, check to see if that packet has been seen before, if not, add it to list, then broadcast.

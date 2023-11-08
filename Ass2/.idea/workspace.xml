@@ -5,38 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68b88382-26fb-4d95-a659-c1ff85733cf8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Header layout" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame012.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame013.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame014.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame015.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame016.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame017.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/First20Frames/frame020.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/outline.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/simplelayour.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/src/Broker.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ass1/src/Broker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/src/Consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ass1/src/Consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/src/Producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ass1/src/Producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/src/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Ass1/src/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ass1/src/insideBroker.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Header layout" beforeDir="false" afterPath="$PROJECT_DIR$/Header layout" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +56,7 @@
       <recent name="D:\projects\Networks\Ass2\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.src/compose.yaml.router1: Compose Deployment">
+  <component name="RunManager" selected="Docker.src/compose.yaml.client1: Compose Deployment">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Ass2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,19 +98,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="src/compose.yaml.client2: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="client2" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="src/compose.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="src/compose.yaml.router1: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -163,13 +124,26 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="src/compose.yaml.router3: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="router3" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.src/compose.yaml.client1: Compose Deployment" />
+        <item itemvalue="Docker.src/compose.yaml.router3: Compose Deployment" />
+        <item itemvalue="Docker.src/compose.yaml.router2: Compose Deployment" />
         <item itemvalue="Docker.src/compose.yaml.router1: Compose Deployment" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Docker.src/compose.yaml.client2: Compose Deployment" />
-        <item itemvalue="Docker.src/compose.yaml.client1: Compose Deployment" />
-        <item itemvalue="Docker.src/compose.yaml.router2: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -194,6 +168,9 @@
       <workItem from="1699221107778" duration="3906000" />
       <workItem from="1699225429120" duration="2663000" />
       <workItem from="1699228268894" duration="26000" />
+      <workItem from="1699228479705" duration="2241000" />
+      <workItem from="1699281373486" duration="13142000" />
+      <workItem from="1699401217156" duration="4498000" />
     </task>
     <servers />
   </component>

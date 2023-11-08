@@ -10,7 +10,7 @@ services:
     build: ..
     volumes:
       - .:/compnets
-    command: python3 router.py router1
+    command: python3 router.py
     stdin_open: true
     tty: true
     environment:
@@ -25,7 +25,7 @@ services:
     build: ..
     volumes:
       - .:/compnets
-    command: python3 router.py router2
+    command: python3 router.py
     stdin_open: true
     tty: true
     environment:
@@ -40,7 +40,7 @@ services:
     build: ..
     volumes:
       - .:/compnets
-    command: python3 router.py router3
+    command: python3 router.py
     stdin_open: true
     tty: true
     environment:

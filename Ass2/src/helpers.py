@@ -1,13 +1,14 @@
 from subprocess import Popen, PIPE, call
 def unpack_header(header):
     bools = header[:1]
-    src_addr = header[1:5]
-    dest_addr = header[5:]
-    return bools, src_addr, dest_addr
+    packet_id = header[1:3]
+    src_addr = header[3:7]
+    dest_addr = header[7:]
+    return bools, packet_id, src_addr, dest_addr
 
 
 def unpack_bools(bools):
-    return False
+    pass
 
 
 def string_to_hex(str):
@@ -31,5 +32,11 @@ def get_adjacent_networks():
             result.append(current)
     return result
 
+
+# Takes an ip and replaces the last section with 255
+def addr_to_broadcast_addr(ip):
+    sections = ip.split(".")
+    sections[-1] = '255'
+    return '.'.join(str(x) for x in sections)
 
 
