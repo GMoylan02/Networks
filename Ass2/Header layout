@@ -17,6 +17,12 @@ header: (subject to change)
 total: 11 bytes
 
 bools:
-1 bit: ack
+1 bit: dest_is_known
 
 when a router receives a packet, check to see if that packet has been seen before, if not, add it to list, then broadcast.
+
+when a router receives a packet for an unknown destination, broadcast to all other routers asking if they know the destination
+store current destination and the router that requested that dest and wait for response.
+when a router receives a packet for an known destination, reply to the sender saying dest_is_known.
+when a router receiver a reply saying dest_is_known, store the sender to that reply and the dest in fwd table,
+send msg saying dest_is_known to the router that requested it.

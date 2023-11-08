@@ -12,6 +12,8 @@ from time import sleep
 
 server_port = 50000
 buffer_size = 65535
+current_dests = []  #queue
+current_routers = []  #queue
 
 
 class Router:
@@ -22,6 +24,7 @@ class Router:
         self.sock.bind(('', server_port))
         print(f"Router {self.ip} up and listening at {datetime.now().strftime('%H:%M:%S')}!")
         self.seen_packets = []
+        self.forward_table = dict()
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
     def begin(self):
@@ -35,12 +38,23 @@ class Router:
         while True:
             incoming_msg, address = self.sock.recvfrom(buffer_size)
             bools, packet_id, src_addr, dest_addr = h.unpack_header(incoming_msg[:11])
+            dest_is_known = bools[0] == b'\b01' # double check
 
-            # Start broadcasting to every router except the one it just received a packet from
-            if packet_id not in self.seen_packets:
-                print(f'Router {self.ip} received packet id {packet_id}')
-                self.broadcast(incoming_msg)
-                self.seen_packets.append(packet_id)
+            if dest_addr not in self.forward_table and packet_id not in self.seen_packets:
+                if not dest_is_known:
+                    print(f'Router {self.ip} received packet id {packet_id}')
+                    # this may break for lots of packets, refactor later
+                    current_dests.append(dest_addr)
+                    current_routers.append(address)
+                    self.broadcast(incoming_msg)
+                    self.seen_packets.append(packet_id)
+                else:
+                    self.forward_table[current_dests.pop(0)] = address
+                    self.sock.sendto(incoming_msg, (current_routers.pop(0), 50000)) # send dest_is_known reply
+            elif dest_addr in self.forward_table and packet_id not in self.seen_packets:
+                self.sock.sendto(incoming_msg, (self.forward_table[dest_addr], 50000))
+
+
 
     def broadcast(self, packet):
         for addr in self.adjacent_networks:

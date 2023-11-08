@@ -16,7 +16,7 @@ buffer_size = 65535
 
 
 class Client:
-    # TODO rework unpack
+    # TODO implement dest_is_known reply
 
     def __init__(self, local_ip, addr):
         self.address = addr
@@ -42,7 +42,6 @@ class Client:
         header = b'\x00' + random.randbytes(2) + self.address + self.address[::-1]
         message = 'Hello, World!'.encode()
         for addr in self.adjacent_networks:
-            print(f'deez2 {h.addr_to_broadcast_addr(addr)}')
             self.sock.sendto(header + message, (h.addr_to_broadcast_addr(addr), 50000))
             print("message sent!")
 
