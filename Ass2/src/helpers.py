@@ -1,10 +1,15 @@
 from subprocess import Popen, PIPE, call
 def unpack_header(header):
     bools = header[:1]
-    packet_id = header[1:3]
-    src_addr = header[3:7]
-    dest_addr = header[7:]
-    return bools, packet_id, src_addr, dest_addr
+    no_hops = header[1:2]
+    packet_id = header[2:4]
+    src_addr = header[4:8]
+    dest_addr = header[8:]
+    return bools, no_hops, packet_id, src_addr, dest_addr
+
+
+def check_nth_bit(byte, n):
+    return (int.from_bytes(byte, byteorder='little') >> n) & 1 == 1
 
 
 def unpack_bools(bools):

@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Header layout" beforeDir="false" afterPath="$PROJECT_DIR$/Header layout" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,28 +56,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Docker.src/compose.yaml.client1: Compose Deployment">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Ass2" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -89,6 +68,19 @@
           <option name="services">
             <list>
               <option value="client1" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="src/compose.yaml.client2: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="client2" />
             </list>
           </option>
           <option name="sourceFilePath" value="src/compose.yaml" />
@@ -138,10 +130,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Docker.src/compose.yaml.client1: Compose Deployment" />
+        <item itemvalue="Docker.src/compose.yaml.client2: Compose Deployment" />
         <item itemvalue="Docker.src/compose.yaml.router3: Compose Deployment" />
         <item itemvalue="Docker.src/compose.yaml.router2: Compose Deployment" />
         <item itemvalue="Docker.src/compose.yaml.router1: Compose Deployment" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -170,6 +162,7 @@
       <workItem from="1699281373486" duration="13142000" />
       <workItem from="1699401217156" duration="4498000" />
       <workItem from="1699457033684" duration="2830000" />
+      <workItem from="1699488160555" duration="6637000" />
     </task>
     <servers />
   </component>

@@ -11,18 +11,20 @@ so for each possible destination, the router has stored what it believes to be t
 
 header: (subject to change)
 1 byte: booleans
+1 byte: no_hops
 2 bytes: packet id (random)
 4 bytes: src address
 4 bytes: destination address
-total: 11 bytes
+total: 12 bytes
 
 bools:
-1 bit: dest_is_known
+1 bit: sender_can_reach_dest
+1 bit: is_broadcast
 
 when a router receives a packet, check to see if that packet has been seen before, if not, add it to list, then broadcast.
 
-when a router receives a packet for an unknown destination, broadcast to all other routers asking if they know the destination
-store current destination and the router that requested that dest and wait for response.
-when a router receives a packet for an known destination, reply to the sender saying dest_is_known.
-when a router receiver a reply saying dest_is_known, store the sender to that reply and the dest in fwd table,
-send msg saying dest_is_known to the router that requested it.
+when a router receives a packet for an unknown destination with a packet id it hasnt seen, broadcast to all other routers asking if they know the destination
+when a router receiver a reply saying dest_is_known with a no_hops, cmp that to the current entry in fwd table at [dest],
+if less or none, replace. send the lower of the two in a reply to any routers in its dict that are requesting dest
+
+when a router receives a packet for an known destination, reply to the sender saying dest_is_known with a no_hops value.

@@ -39,7 +39,8 @@ class Client:
         t2.join()
 
     def broadcast(self):
-        header = b'\x00' + random.randbytes(2) + self.address + self.address[::-1]
+        header = b'\x40\x00' + random.randbytes(2) + self.address + self.address[::-1]
+        print(header)
         message = 'Hello, World!'.encode()
         for addr in self.adjacent_networks:
             self.sock.sendto(header + message, (h.addr_to_broadcast_addr(addr), 50000))
@@ -48,8 +49,14 @@ class Client:
     def listen(self):
         while True:
             incoming_msg, address = self.sock.recvfrom(buffer_size)
-            bools, packet_id, src_addr, dest_addr = h.unpack_header(incoming_msg[:9])
-            print(f"Received packet from {src_addr} with the message {incoming_msg[12:]} at {datetime.now().strftime('%H:%M:%S')}!")
+            address = address[0]
+            bools, no_hops, packet_id, src_addr, dest_addr = h.unpack_header(incoming_msg)
+            if h.check_nth_bit(bools, 6):
+                print(f'received request for my location, contacting router {address}')
+                incoming_msg = b'\x80' + (int.from_bytes(no_hops, byteorder='little') + 1).to_bytes(1, byteorder='little') + incoming_msg[2:]
+                self.sock.sendto(incoming_msg, (address, server_port))
+            print(f'from {src_addr}, bools is {bools}, no_hops is {no_hops}')
+            print(f"Received packet from {src_addr} with the message {incoming_msg} at {datetime.now().strftime('%H:%M:%S')}!")
 
 
 
