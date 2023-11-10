@@ -7,6 +7,7 @@
     <list default="true" id="68b88382-26fb-4d95-a659-c1ff85733cf8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Header layout" beforeDir="false" afterPath="$PROJECT_DIR$/Header layout" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.py" afterDir="false" />
@@ -55,7 +56,7 @@
       <recent name="D:\projects\Networks\Ass2\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.src/compose.yaml.client1: Compose Deployment">
+  <component name="RunManager" selected="Docker.src/compose.yaml.client2: Compose Deployment">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -129,8 +130,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.src/compose.yaml.client1: Compose Deployment" />
         <item itemvalue="Docker.src/compose.yaml.client2: Compose Deployment" />
+        <item itemvalue="Docker.src/compose.yaml.client1: Compose Deployment" />
         <item itemvalue="Docker.src/compose.yaml.router3: Compose Deployment" />
         <item itemvalue="Docker.src/compose.yaml.router2: Compose Deployment" />
         <item itemvalue="Docker.src/compose.yaml.router1: Compose Deployment" />
@@ -162,7 +163,9 @@
       <workItem from="1699281373486" duration="13142000" />
       <workItem from="1699401217156" duration="4498000" />
       <workItem from="1699457033684" duration="2830000" />
-      <workItem from="1699488160555" duration="6637000" />
+      <workItem from="1699488160555" duration="6779000" />
+      <workItem from="1699568520842" duration="6595000" />
+      <workItem from="1699577902970" duration="3787000" />
     </task>
     <servers />
   </component>

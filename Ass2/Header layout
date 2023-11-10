@@ -28,3 +28,24 @@ when a router receiver a reply saying dest_is_known with a no_hops, cmp that to 
 if less or none, replace. send the lower of the two in a reply to any routers in its dict that are requesting dest
 
 when a router receives a packet for an known destination, reply to the sender saying dest_is_known with a no_hops value.
+
+
+
+if u receive a broadcast, check if no_hops is less than the current value for that src_addr. replace if so
+
+check if you know the dest_addr. if not, save the fact that {address} is searching for dest_addr, then increment no_hops and forward broadcast to all other routers
+
+if you do know, get the no_hops value for that dest, increment it, add it to header and send a 'known' response to {address}
+
+if u receive a non-broadcast packet for an unknown dest_addr or a closer dest_addr, add that dest_addr and {address} to known fwd table, save no_hops with dest_addr,
+loop thru all addresses searchign for dest_addr and send them 'known' responses with no_hops incremented
+
+if its non-broadcast for known location, just forward
+
+as a client, if the dest u want to send to isnt in routing table, then broadcast with no_hops=1
+if it is, just forward with no_hops = 0
+
+if u receive a broadcast, send a reply with no_hops = 1
+if u receive a packet with dest not equal to urself, add that address to routing table
+
+either way, print result
