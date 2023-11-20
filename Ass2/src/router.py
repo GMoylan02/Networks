@@ -12,8 +12,6 @@ from time import sleep
 
 server_port = 50000
 buffer_size = 65535
-current_dests = []  #queue
-current_routers = []  #queue
 
 
 class Router:

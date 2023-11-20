@@ -21,16 +21,6 @@ bools:
 1 bit: sender_can_reach_dest
 1 bit: is_broadcast
 
-when a router receives a packet, check to see if that packet has been seen before, if not, add it to list, then broadcast.
-
-when a router receives a packet for an unknown destination with a packet id it hasnt seen, broadcast to all other routers asking if they know the destination
-when a router receiver a reply saying dest_is_known with a no_hops, cmp that to the current entry in fwd table at [dest],
-if less or none, replace. send the lower of the two in a reply to any routers in its dict that are requesting dest
-
-when a router receives a packet for an known destination, reply to the sender saying dest_is_known with a no_hops value.
-
-
-
 if u receive a broadcast, check if no_hops is less than the current value for that src_addr. replace if so
 
 check if you know the dest_addr. if not, save the fact that {address} is searching for dest_addr, then increment no_hops and forward broadcast to all other routers
