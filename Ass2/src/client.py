@@ -16,7 +16,6 @@ buffer_size = 65535
 
 
 class Client:
-    # TODO implement dest_is_known reply
 
     def __init__(self, local_ip, addr):
         self.address = addr
@@ -42,7 +41,7 @@ class Client:
         #while True:
             #message = input(f'Please type the message you would like to send!').encode()
             #dest_addr = int(input('Enter the desired destination address: '), 16).to_bytes(4, byteorder='big')
-        dest_addr = self.address[::-1]
+        dest_addr = self.get_destination()
         message = "Hello, World!".encode()
         self.broadcast(message, dest_addr)
 
@@ -57,7 +56,7 @@ class Client:
 
         else:
             print(f'Sending packets directly!')
-            header = b'\x40\x00' + random.randbytes(2) + self.address + dest_addr
+            header = b'\x00\x00' + random.randbytes(2) + self.address + dest_addr
             self.sock.sendto(header + message, (self.routing_table[dest_addr], 50000))
 
     def listen(self):
@@ -65,21 +64,34 @@ class Client:
             incoming_msg, address = self.sock.recvfrom(buffer_size)
             address = address[0]
             bools, no_hops, packet_id, src_addr, dest_addr = h.unpack_header(incoming_msg)
-            sender_can_reach_dest = h.check_nth_bit(bools, 7)  # double check
+            ack = h.check_nth_bit(bools, 7)  # double check
             is_broadcast = h.check_nth_bit(bools, 6)
 
-            if not socket.gethostbyname(socket.gethostname()) == address:
+            if not socket.gethostbyname(socket.gethostname()) == address and not ack:
 
-                if is_broadcast and packet_id not in self.seen_packets:
+                if is_broadcast and packet_id not in self.seen_packets and dest_addr == self.address:
                     print(f'Received request for my location from {address}, sending response!')
-                    incoming_msg = b'\x80' + (int.from_bytes(no_hops, byteorder='little') + 1).to_bytes(1, byteorder='little') + incoming_msg[2:]
+                    incoming_msg = b'\x00' + (int.from_bytes(no_hops, byteorder='little') + 1).to_bytes(1, byteorder='little') + incoming_msg[2:]
                     self.sock.sendto(incoming_msg, (address, server_port))
-                elif dest_addr != self.address:
+                elif dest_addr != self.address and not is_broadcast:
                     print(f'Received information that {dest_addr} can be reached by {address}!')
                     self.routing_table[dest_addr] = address
-                print(f"Received packet from {src_addr} with the message {incoming_msg} at {datetime.now().strftime('%H:%M:%S')}!")
+                    # send ack
+                    message_to_send = b'\x80' + incoming_msg[1:]
+                    print(f'Sending ack to {address}')
+                    self.sock.sendto(message_to_send, (address, 50000))
+                print(f"Received packet from {src_addr} with the message {incoming_msg}!")
             self.seen_packets.append(packet_id)
 
+    def get_destination(self):
+        destinations = [b'\xaa\xaa\xaa\xaa', b'\xbb\xbb\xbb\xbb', b'\xcc\xcc\xcc\xcc', b'\xdd\xdd\xdd\xdd']
+        destinations.remove(self.address)
+        return destinations[random.randint(0, 2)]
+
+    def send_removal_request(self):
+        header = b'\x60\x00' + random.randbytes(2) + self.address + self.address
+        for net in self.adjacent_networks:
+            self.sock.sendto(header, (h.addr_to_broadcast_addr(net), 50000))
 
 
 def main(argv):

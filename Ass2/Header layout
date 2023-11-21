@@ -18,8 +18,9 @@ header: (subject to change)
 total: 12 bytes
 
 bools:
-1 bit: sender_can_reach_dest
+1 bit: ack
 1 bit: is_broadcast
+1 bit: removal_request
 
 if u receive a broadcast, check if no_hops is less than the current value for that src_addr. replace if so
 
