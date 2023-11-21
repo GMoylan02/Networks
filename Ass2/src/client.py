@@ -38,12 +38,17 @@ class Client:
         t2.join()
 
     def handle_user_input(self):
-        #while True:
-            #message = input(f'Please type the message you would like to send!').encode()
-            #dest_addr = int(input('Enter the desired destination address: '), 16).to_bytes(4, byteorder='big')
-        dest_addr = self.get_destination()
-        message = "Hello, World!".encode()
-        self.broadcast(message, dest_addr)
+        while True:
+            message = input(f'Please type the message you would like to send!').encode()
+            dest_addr = int(input('Enter the desired destination address: '), 16).to_bytes(4, byteorder='big')
+            self.broadcast(message, dest_addr)
+            sleep(1)
+            if input(f'Would you like to broadcast to all routers telling them to remove you from their routing tables?'
+                     f' (Yes/No)').lower() == 'yes':
+                header = b'\x60\x00' + random.randbytes(2) + self.address + self.address
+                message = 'This packet is a forgetMe request'.encode()
+                for addr in self.adjacent_networks:
+                    self.sock.sendto(header + message, (h.addr_to_broadcast_addr(addr), 50000))
 
     def broadcast(self, message, dest_addr):
         if dest_addr not in self.routing_table:
@@ -66,8 +71,10 @@ class Client:
             bools, no_hops, packet_id, src_addr, dest_addr = h.unpack_header(incoming_msg)
             ack = h.check_nth_bit(bools, 7)  # double check
             is_broadcast = h.check_nth_bit(bools, 6)
+            forget_me = h.check_nth_bit(bools, 5)
 
-            if not socket.gethostbyname(socket.gethostname()) == address and not ack:
+
+            if not socket.gethostbyname(socket.gethostname()) == address and not ack and not forget_me:
 
                 if is_broadcast and packet_id not in self.seen_packets and dest_addr == self.address:
                     print(f'Received request for my location from {address}, sending response!')

@@ -46,22 +46,28 @@ class Router:
             bools, no_hops, packet_id, src_addr, dest_addr = h.unpack_header(header)
             no_hops_int = int.from_bytes(no_hops, byteorder='little')
             ack = h.check_nth_bit(bools, 7)  # double check
-            print(f'ack is {ack}')
-            print(f'bools is {bools}')
             is_broadcast = h.check_nth_bit(bools, 6)
+            forget_request = h.check_nth_bit(bools, 5)
 
-            if ack:
+            if forget_request and packet_id not in self.seen_packets:
+                if src_addr in self.forward_table:
+                    del self.forward_table[src_addr]
+                    print(f'Received forgetMe request from {src_addr}!')
+                    print(f'My routing table is now {self.forward_table} after removing {src_addr}')
+                self.broadcast(incoming_msg)
+
+            elif ack:
                 self.ack_table[address] = True
                 print(f'Ack from {address} received!')
 
-            elif address not in self.my_addresses and not ack:
+            elif address not in self.my_addresses and not ack and not forget_request:
 
                 if is_broadcast and packet_id not in self.seen_packets:
                     if src_addr not in self.min_hops_to_endpoint or no_hops_int < self.min_hops_to_endpoint[src_addr]:
                         print(f'Received WhoIs request for {dest_addr} from {address}, appending {src_addr} to my list as well on addr {address}')
                         self.min_hops_to_endpoint[src_addr] = no_hops_int
                         self.forward_table[src_addr] = address
-                        print(f'my fwd table is {self.forward_table}')
+                        print(f'My routing table is {self.forward_table} after adding {src_addr}')
 
                     if dest_addr not in self.forward_table:
                         print(f'Forwarding WhoIs request by broadcast!')
@@ -95,13 +101,13 @@ class Router:
 
                 elif not is_broadcast:
                     # send ack
-                    message_to_send = b'\x80' + no_hops + incoming_msg[2:]
+                    message_to_send = b'\x80' + no_hops + incoming_msg[2:12] + 'This packet is an ack'.encode()
                     self.sock.sendto(message_to_send, (address, 50000))
                     if dest_addr not in self.forward_table or src_addr not in self.min_hops_to_endpoint or no_hops_int < self.min_hops_to_endpoint[src_addr]:
                         print(f'Received a response to my previous request for {dest_addr} from address {address}')
 
                         self.forward_table[dest_addr] = address
-                        print(f'my fwd table is {self.forward_table}')
+                        print(f'My routing table is {self.forward_table} after adding {dest_addr}')
                         self.min_hops_to_endpoint[dest_addr] = no_hops_int
                         no_hops_int += 1
                         no_hops = no_hops_int.to_bytes(1, byteorder='little')
@@ -111,7 +117,7 @@ class Router:
                     else:
                         print(f'Sending ack to {address}!')
                         #send ack
-                        message_to_send = b'\x80' + no_hops + incoming_msg[2:]
+                        message_to_send = b'\x80' + no_hops + incoming_msg[2:12] + 'This packet is an ack'.encode()
                         self.sock.sendto(message_to_send, (address, 50000))
 
                         print(f'Received a regular packet, forwarding!')
